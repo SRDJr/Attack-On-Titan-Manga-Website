@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AOT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <style>
+        h1 {
+            font-family: Copperplate, Copperplate Gothic Light, fantasy;
+            font-size: 3rem;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: 900;
+            line-height: 3.5rem;
+            letter-spacing: .5rem;
+            text-shadow: .2rem .2rem .5rem rgb(128, 116, 116);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            margin: 2em;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2.75rem;
+
+        }
+
+        main {
+            margin: 1em;
+            padding: 1em;
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(4, 1fr);
+            /* grid-template-columns: repeat(Auto-Fit, minmax(300px, 340px));
+            justify-content: center; */
+        }
+
+        header h1 {
+            overflow: hidden;
+            /* Ensures the content is not revealed until the animation */
+            border-right: .15em solid rosybrown;
+            /* The typwriter cursor */
+            white-space: nowrap;
+            /* Keeps the content on a single line */
+            margin: 0 auto;
+            /* Gives that scrolling effect as the typing happens */
+            letter-spacing: .15em;
+            /* Adjust as needed */
+            animation:
+                typing 3s steps(60, end) ,
+                blink-caret 0.75s step-end 0s 20 forwards;
+        }
+
+        /* The typing effect */
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 15ch
+            }
+        }
+
+        /* The typewriter cursor effect */
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: rosybrown;
+            }
+
+            100% {
+                border-color: transparent;
+            }
+        }
+
+        @media(max-width: 1450px) {
+            main {
+                padding: 0.5em;
+                margin: 0.5em;
+            }
+        }
+
+        @media(max-width: 1400px) {
+            main {
+                padding: 0.2em;
+                margin: 0.2em;
+            }
+        }
+
+        @media(max-width: 1350px) {
+            main {
+                padding: 0em;
+                margin: 0em;
+            }
+        }
+
+        @media(max-width: 1267px) {
+            main {
+                grid-template-columns: repeat(3, 1fr);
+                margin: 1em;
+                padding: 1em;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                line-height: 3rem;
+                letter-spacing: .4rem;
+            }
+        }
+
+        @media(max-width: 1170px) {
+            main {
+                margin: 0.5em;
+                padding: .5em;
+            }
+        }
+
+        @media(max-width: 1070px) {
+            main {
+                margin: 0.2em;
+                padding: .2em;
+            }
+        }
+
+        @media(max-width: 1002px) {
+            main {
+                grid-template-columns: repeat(2, 1fr);
+                margin: 1em;
+                padding: 1em;
+            }
+
+            h1 {
+                font-size: 2rem;
+                line-height: 2.5rem;
+                letter-spacing: .3rem;
+            }
+
+            header p {
+                font-size: .5rem;
+            }
+        }
+
+        @media(max-width: 800px) {
+            main {
+                margin: 0.5em;
+                padding: 0.5em;
+            }
+        }
+
+        @media(max-width: 750px) {
+            .container {
+                margin: 1em;
+            }
+        }
+
+        @media(max-width: 700px) {
+            main {
+                margin: 0em;
+                padding: 0em;
+            }
+        }
+
+        @media(max-width: 550px) {
+            main {
+                grid-template-columns: repeat(1, 1fr);
+                margin: 1em;
+                padding: 1em;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                line-height: 2rem;
+                letter-spacing: .2rem;
+            }
+
+            .container {
+                margin: 2em;
+            }
+
+            header p {
+                font-size: .05rem;
+            }
+        }
+
+        @media(max-width: 500px) {
+            .container {
+                margin: 1em;
+            }
+        }
+
+        @media(max-width: 450px) {
+            main {
+                margin: 0.5em;
+                padding: 0.5em;
+            }
+        }
+
+        @media(max-width: 400px) {
+            main {
+                margin: 0em;
+                padding: 0em;
+            }
+        }
+
+        @media(max-width: 350px) {
+            .imgcontainer img {
+                object-fit: cover;
+                object-position: center;
+                position: relative;
+            }
+
+        }
+
+        header p {
+            max-width: 768px;
+            text-align: center;
+            font-size: large;
+        }
+
+        .cardcontainer {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            border: 1px solid rgb(112, 106, 106);
+            overflow: none;
+            position: relative;
+            border-radius: 1rem;
+            height: 100%;
+        }
+
+        .cardcontainer:hover .imgcontainer img {
+            transform: scale(1.1);
+            transition-duration: .2s;
+        }
+
+        .imgcontainer {
+            position: relative;
+            overflow: none;
+            height: 19rem;
+        }
+
+        .imgcontainer img {
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            height: 100%;
+            width: 100%;
+        }
+
+        .cardcontent {
+            display: flex;
+            flex-direction: column;
+            margin: 1.5rem;
+            gap: .2rem;
+        }
+
+        .cardtitle {
+            font-size: 1rem;
+            color: black;
+            font-weight: 700;
+        }
+
+        .cardtitle:hover {
+            transform: scale(1.02);
+            color: blue;
+            transition-duration: .2s;
+        }
+
+        .carddesc {
+            max-width: 20rem;
+        }
+
+        .cardfooter {
+            margin-top: auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: .75rem;
+        }
+
+        .info {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+        }
+
+        .info img {
+            height: 75%;
+            width: 25%;
+            border-radius: 2rem;
+            align-self: center;
+        }
+
+        .author {
+            width: 65%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            gap: .2rem;
+            font-size: 1rem;
+        }
+
+        .author span:nth-child(1) {
+            color: rgb(22, 22, 154);
+        }
+
+        .author span:nth-child(2) {
+            color: rgb(114, 112, 112);
+        }
+
+        .tag {
+            align-self: center;
+        }
+
+        .tag button {
+            background-color: white;
+            border: 1px solid black;
+            border-radius: .2rem;
+            box-shadow: 1.2px 1.2px blue;
+        }
+
+        .tag button:hover {
+            transform: scale(1.1);
+            transition-duration: .2s;
+        }
+
+        .tag button a {
+            padding: 0.75rem;
+            font-size: 1rem;
+            color: rgb(88, 19, 152);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>attack on titan</h1>
+            <p>Embark on an exhilarating journey through Attack on Titan's manga on our site. Immerse yourself in the
+                heart-pounding action, intricate plot twists, and captivating characters. Stay tuned for the latest
+                chapters, and experience the pulse-pounding intensity of this acclaimed series, all in one place!</p>
+        </header>
+        <main>
+            <div class="cardcontainer">
+                <div class="imgcontainer">
+                    <img src="https://m.media-amazon.com/images/M/MV5BZGVkYTY5YjUtZDEyZS00MTM5LWI3MTktN2NhYzUyNWZjOTdmXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_QL75_UX500_CR0,0,500,281_.jpg"
+                        alt="Error loading image..." class="cardimage" loading="lazy">
+
+                </div>
+                <div class="cardcontent">
+                    <a href="https://aotepisodes.net/season-1-episode-1-eng-sub.html" target="_blank"
+                        class="cardtitle">To You, 2000 years from now</a>
+                    <p class="carddesc">One hundred years after the appearance of the Titans, humanity receives a grim
+                        reminder of the threat that the Titans pose. Under the belief that they were safe behind the
+                        Walls, a Colossal Titan peers over the Walls and breaks the Wall. A young boy and his friend do
+                        what they can to save the boy's mother, trapped below the debris of their fallen house, but they
+                        are forced to flee when a disturbing Titan appears. The boy watches as, before his eyes, the
+                        Titan picks her up and eats her. </p>
+                </div>
+                <div class="cardfooter">
+                    <div class="info">
+                        <img src="https://i.pinimg.com/474x/f6/c0/43/f6c043546dd6d52ebe2cf262210bfc64.jpg" alt=""
+                            loading="lazy">
+                        <div class="author">
+                            <span>Smruti
+                                Ranjan Das
+                            </span>
+                            <span>14 september 2023</span>
+                        </div>
+                    </div>
+                    <div class="tag">
+                        <button><a href="https://ww2.attack-on-titan-manga.com/manga/shingeki-no-kyojin-chapter-1/"
+                                target="_blank">MANGA</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="cardcontainer">
+                <div class="imgcontainer">
+                    <img src="https://preview.redd.it/rewatching-aot-season-1-episode-2-and-found-this-who-is-v0-l9rfvy5ae4w81.png?width=640&crop=smart&auto=webp&s=1c9e2f4c6f904316f9e210290b42df8cda4c4e58"
+                        alt="Error loading image..." class="cardimage" loading="lazy">
+
+                </div>
+                <div class="cardcontent">
+                    <a href="https://aotepisodes.net/season-1-episode-2-eng-sub.html" target="_blank"
+                        class="cardtitle">That day</a>
+                    <p class="carddesc">Titans continue to kill the citizens of Shiganshina as Eren, Mikasa, and Armin
+                        escape with their lives. After an Armored Titan breaks through the inner gate, Eren vows to kill
+                        all the Titans in the world. A year after Armin's grandfather perishes in an operation to retake
+                        Wall Maria, the three children join the military as part of the 104th Cadet Corps. </p>
+                </div>
+                <div class="cardfooter">
+                    <div class="info">
+                        <img src="https://i.pinimg.com/474x/f6/c0/43/f6c043546dd6d52ebe2cf262210bfc64.jpg" alt=""
+                            loading="lazy">
+                        <div class="author">
+                            <span>Smruti
+                                Ranjan Das
+                            </span>
+                            <span>14 september 2023</span>
+                        </div>
+                    </div>
+                    <div class="tag">
+                        <button><a href="https://ww2.attack-on-titan-manga.com/manga/shingeki-no-kyojin-chapter-2/"
+                                target="_blank">MANGA</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="cardcontainer">
+                <div class="imgcontainer">
+                    <img src="https://images.static-bluray.com/reviews/10027_4.jpg" alt="Error loading image..."
+                        class="cardimage" loading="lazy">
+
+                </div>
+                <div class="cardcontent">
+                    <a href="https://aotepisodes.net/season-1-episode-3-eng-sub.html" target="_blank"
+                        class="cardtitle">Night of the Disbanding Ceremony</a>
+                    <p class="carddesc">As the echoes of Titan havoc linger, Eren, Mikasa, and Armin navigate a world
+                        fraught with peril. In Chapter 3, their journey takes unexpected turns, unveiling fresh
+                        challenges that test their bonds and fortitude. The saga continues with suspense, forging a path
+                        of discovery against the enigmatic Titans. </p>
+                </div>
+                <div class="cardfooter">
+                    <div class="info">
+                        <img src="https://i.pinimg.com/474x/f6/c0/43/f6c043546dd6d52ebe2cf262210bfc64.jpg" alt=""
+                            loading="lazy">
+                        <div class="author">
+                            <span>Smruti
+                                Ranjan Das
+                            </span>
+                            <span>14 september 2023</span>
+                        </div>
+                    </div>
+                    <div class="tag">
+                        <button><a href="https://ww2.attack-on-titan-manga.com/manga/shingeki-no-kyojin-chapter-3-2/"
+                                target="_blank">MANGA</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="cardcontainer">
+                <div class="imgcontainer">
+                    <img src="https://images.saymedia-content.com/.image/t_share/MTc2MjkyMDU2MDI0MDk3OTY1/attack-on-titan-analysis-the-culture-of-complacency.jpg"
+                        alt="Error loading image..." class="cardimage" loading="lazy">
+
+                </div>
+                <div class="cardcontent">
+                    <a href="https://aotepisodes.net/season-1-episode-4-eng-sub.html" target="_blank"
+                        class="cardtitle">First Battle</a>
+                    <p class="carddesc">Survey Corps faces their inaugural major battle against the Titans. Chaos
+                        unfolds as Titans breach the city's walls, and Eren's shocking transformation into a Titan
+                        raises questions about humanity's survival. Desperate tactics are employed, sacrifices made, and
+                        the battle highlights both humanity's struggle and the mysteries surrounding the Titans. </p>
+                </div>
+                <div class="cardfooter">
+                    <div class="info">
+                        <img src="https://i.pinimg.com/474x/f6/c0/43/f6c043546dd6d52ebe2cf262210bfc64.jpg" alt=""
+                            loading="lazy">
+                        <div class="author">
+                            <span>Smruti
+                                Ranjan Das
+                            </span>
+                            <span>14 september 2023</span>
+                        </div>
+                    </div>
+                    <div class="tag">
+                        <button><a href="https://ww2.attack-on-titan-manga.com/manga/shingeki-no-kyojin-chapter-4/"
+                                target="_blank">MANGA</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="cardcontainer">
+                <div class="imgcontainer">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNGFhZmJlYzItYzM2MS00ZjczLThiMWEtZWEzNmQ4MTNjM2NmXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg"
+                        alt="Error loading image..." class="cardimage" loading="lazy">
+
+                </div>
+                <div class="cardcontent">
+                    <a href="https://aotepisodes.net/season-1-episode-5-eng-sub.html" target="_blank"
+                        class="cardtitle">A dull glow in the midst of Despair</a>
+                    <p class="carddesc">Pivotal moments unfold. Eren Jaeger's transformation into a Titan during the
+                        battle with the Bearded Titan marks a turning point. The emergence of the Female Titan, revealed
+                        to be Annie Leonhart, leads to an intense showdown. Annie's self-crystallization leaves the
+                        Scout Regiment with unanswered questions. Meanwhile, the shocking revelation of Titans hidden
+                        within Wall Sina deepens the mystery.</p>
+                </div>
+                <div class="cardfooter">
+                    <div class="info">
+                        <img src="https://i.pinimg.com/474x/f6/c0/43/f6c043546dd6d52ebe2cf262210bfc64.jpg" alt=""
+                            loading="lazy">
+                        <div class="author">
+                            <span>Smruti
+                                Ranjan Das
+                            </span>
+                            <span>14 september 2023</span>
+                        </div>
+                    </div>
+                    <div class="tag">
+                        <button><a href="https://ww2.attack-on-titan-manga.com/manga/shingeki-no-kyojin-chapter-5-2/"
+                                target="_blank">MANGA</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="cardcontainer">
+                <div class="imgcontainer">
+                    <img src="https://i.pinimg.com/originals/2e/df/af/2edfaf84dac6978a9df2e405c27cad78.jpg"
+                        alt="Error loading image..." class="cardimage" loading="lazy">
+
+                </div>
+                <div class="cardcontent">
+                    <a href="https://aotepisodes.net/season-1-episode-6-eng-sub.html" target="_blank"
+                        class="cardtitle">The world that the girl saw</a>
+                    <p class="carddesc">Historia's mysterious past and connection to the Titans are explored. Fragments
+                        of a girl's memories hold vital clues, and Commander Erwin's determination drives the Survey
+                        Corps forward. The elusive basement key becomes a symbol of hope, and hints at a broader world
+                        beyond the walls intensify the intrigue. </p>
+                </div>
+                <div class="cardfooter">
+                    <div class="info">
+                        <img src="https://i.pinimg.com/474x/f6/c0/43/f6c043546dd6d52ebe2cf262210bfc64.jpg" alt=""
+                            loading="lazy">
+                        <div class="author">
+                            <span>Smruti
+                                Ranjan Das
+                            </span>
+                            <span>14 september 2023</span>
+                        </div>
+                    </div>
+                    <div class="tag">
+                        <button><a href="https://ww2.attack-on-titan-manga.com/manga/shingeki-no-kyojin-chapter-6/"
+                                target="_blank">MANGA</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="cardcontainer">
+                <div class="imgcontainer">
+                    <img src="https://images.saymedia-content.com/.image/c_limit%2Ccs_srgb%2Cq_auto:eco%2Cw_700/MTc2NDY0NzgwNTQ5NjI5MTQx/attack-on-titans-fight-scenes-realistic.webp"
+                        alt="Error loading image..." class="cardimage" loading="lazy">
+
+                </div>
+                <div class="cardcontent">
+                    <a href="https://aotepisodes.net/season-1-episode-7-eng-sub.html" target="_blank"
+                        class="cardtitle">Small Blade</a>
+                    <p class="carddesc">
+                        The soldiers, surrounded by Titans, lose faith in reaching their supplies. Mikasa finds Armin,
+                        who reveals the team's demise. Mikasa comforts him, motivates the soldiers, and leads them into
+                        battle. While facing Titans, Mikasa runs out of gas but remembers Eren's words to fight. As a
+                        Titan approaches, she instinctively defends herself. To her surprise, another Titan arrives to
+                        aid her in the battle. </p>
+                </div>
+                <div class="cardfooter">
+                    <div class="info">
+                        <img src="https://i.pinimg.com/474x/f6/c0/43/f6c043546dd6d52ebe2cf262210bfc64.jpg" alt=""
+                            loading="lazy">
+                        <div class="author">
+                            <span>Smruti
+                                Ranjan Das
+                            </span>
+                            <span>14 september 2023</span>
+                        </div>
+                    </div>
+                    <div class="tag">
+                        <button><a href="https://ww2.attack-on-titan-manga.com/manga/shingeki-no-kyojin-chapter-7/"
+                                target="_blank">MANGA</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="cardcontainer">
+                <div class="imgcontainer">
+                    <img src="https://media.cdn.adultswim.com/uploads/20200225/thumbnails/2_202251636283-attackontitan_046_dup-20181017.jpg"
+                        alt="Error loading image..." class="cardimage" loading="lazy">
+
+                </div>
+                <div class="cardcontent">
+                    <a href="https://aotepisodes.net/season-1-episode-8-eng-sub.html" target="_blank"
+                        class="cardtitle">Roar</a>
+                    <p class="carddesc">
+                        Mikasa, bewildered by a rogue Titan killing others, is picked up by Armin. Connie suggests
+                        leaving, but they witness the same Titan killing more Titans. Armin plans to stay behind, but
+                        Mikasa refuses. Connie offers to carry Armin while Mikasa covers them. Armin reveals he has a
+                        plan. Meanwhile, Jean leads a group to HQ, finding Titans swarming. The rogue Titan clears the
+                        area, and Mikasa, Connie, and Armin propose using it for survival.</p>
+                </div>
+                <div class="cardfooter">
+                    <div class="info">
+                        <img src="https://i.pinimg.com/474x/f6/c0/43/f6c043546dd6d52ebe2cf262210bfc64.jpg" alt=""
+                            loading="lazy">
+                        <div class="author">
+                            <span>Smruti
+                                Ranjan Das
+                            </span>
+                            <span>14 september 2023</span>
+                        </div>
+                    </div>
+                    <div class="tag">
+                        <button><a href="https://w6.read-attackontitan-manga.com/manga/shingeki-no-kyojin-chapter-8/"
+                                target="_blank">MANGA</a></button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
